@@ -8,13 +8,11 @@ const { exec } = require("child_process");
 const cron_time = process.env.CRON_TIME || "0 10 * * *";
 const run_app = () => {
   cron.schedule(cron_time, async () => {
-    console.log(`cron scheduled for ${cron_time}`);
     exec("python index.py", (error) => {
       if (error) {
         console.error(`Error executing Python script: ${error}`);
         return;
       }
-      console.log("fetched crypto data");
       client.initialize();
       handle_events(send_chats);
     });
