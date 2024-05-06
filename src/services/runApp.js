@@ -8,10 +8,7 @@ const { exec } = require("child_process");
 const cron_time = process.env.CRON_TIME || "0 10 * * *";
 const run_app = () => {
   cron.schedule(cron_time, async () => {
-    console.log(client);
-    console.log(state);
     console.log(`cron scheduled for ${cron_time}`);
-    console.log("running");
     exec("python index.py", (error) => {
       if (error) {
         console.error(`Error executing Python script: ${error}`);

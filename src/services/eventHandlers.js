@@ -3,8 +3,6 @@ const qrcode = require("qrcode-terminal");
 const client = require("../config/wwjsConfig");
 
 const handle_events = (cb) => {
-  console.log("handling events");
-
   client.on("qr", (qr) => {
     qrcode.generate(qr, { small: true });
   });
